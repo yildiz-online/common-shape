@@ -12,3 +12,4 @@ pipelines:
             - openssl aes-256-cbc -pass pass:$OPENSSL_PWD -in private-key.gpg.enc -out private-key.gpg -d
             - gpg --import private-key.gpg
             - mvn -V -B -s settings.xml org.jacoco:jacoco-maven-plugin:prepare-agent deploy sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.login=$SONAR
+            - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/yildiz-engine-team/common-shape/downloads" --from files=@"target/common-shape-1.0.1-SNAPSHOT.jar"
