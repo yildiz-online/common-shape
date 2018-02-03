@@ -42,10 +42,11 @@ public final class Plane {
 
     /**
      * Full constructor.
-     *
+     * @deprecated use rectangle method instead.
      * @param widthSize Width size of the box.
      * @param depthSize Depth size of the box.
      */
+    @Deprecated
     public Plane(final int widthSize, final int depthSize) {
         super();
         assert widthSize > 0;
@@ -56,11 +57,20 @@ public final class Plane {
 
     /**
      * Full constructor, create a square.
-     *
+     * @deprecated use square method instead.
      * @param size Size for the width and depth
      */
+    @Deprecated
     public Plane(final int size) {
         this(size, size);
+    }
+
+    public static Plane square(final int size) {
+        return new Plane(size, size);
+    }
+
+    public static Plane rectangle(final int widthSize, final int depthSize) {
+        return new Plane(widthSize, depthSize);
     }
 
     @Override

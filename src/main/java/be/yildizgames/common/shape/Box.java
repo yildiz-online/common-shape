@@ -64,11 +64,16 @@ public final class Box {
 
     /**
      * Full constructor, create a cube.
-     *
+     * @deprecated Use cube static method instead.
      * @param size Size for the width, height and depth
      */
+    @Deprecated
     public Box(final int size) {
         this(size, size, size);
+    }
+
+    public static Box cube(final int size) {
+        return new Box(size, size, size);
     }
 
     @Override
