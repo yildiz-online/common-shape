@@ -22,58 +22,7 @@
  *
  */
 
-package be.yildizgames.common.shape;
+module be.yildizgames.common.shape {
 
-/**
- * Data to create a sphere.
- *
- * @author Grégory Van den Borre
- *
- * Invariant radius &gt; 0
- */
-public final class Sphere {
-
-    /**
-     * Sphere radius.
-     */
-    public final float radius;
-
-    /**
-     * Full constructor.
-     *
-     * @param radiusSize Radius size of the sphere, must be &gt; 0.
-     */
-    private Sphere(final float radiusSize) {
-        super();
-        assert radiusSize > 0;
-        this.radius = radiusSize;
-    }
-
-    /**
-     * Full constructor.
-     *
-     * @param radiusSize Radius size of the sphere, must be &gt; 0.
-     */
-    public static Sphere fromRadius(final float radiusSize) {
-        return new Sphere(radiusSize);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        Sphere sphere = (Sphere) o;
-
-        return Float.compare(sphere.radius, radius) == 0;
-    }
-
-    @Override
-    public int hashCode() {
-        return Float.floatToIntBits(radius);
-    }
+    exports be.yildizgames.common.shape;
 }

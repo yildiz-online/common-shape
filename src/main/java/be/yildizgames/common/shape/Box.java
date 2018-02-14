@@ -53,7 +53,7 @@ public final class Box {
      * @param heightSize Height size of the box.
      * @param depthSize  Depth size of the box.
      */
-    public Box(final int widthSize, final int heightSize, final int depthSize) {
+    private Box(final int widthSize, final int heightSize, final int depthSize) {
         super();
         assert widthSize > 0;
         assert heightSize > 0;
@@ -64,17 +64,23 @@ public final class Box {
     }
 
     /**
-     * Full constructor, create a cube.
-     * @deprecated Use cube static method instead.
-     * @param size Size for the width, height and depth
+     * Create a cube.
+     *
+     * @param size  Size of the box.
      */
-    @Deprecated
-    public Box(final int size) {
-        this(size, size, size);
-    }
-
     public static Box cube(final int size) {
         return new Box(size, size, size);
+    }
+
+    /**
+     * Create a box.
+     *
+     * @param widthSize  Width size of the box.
+     * @param heightSize Height size of the box.
+     * @param depthSize  Depth size of the box.
+     */
+    public static Box box(final int widthSize, final int heightSize, final int depthSize) {
+        return new Box(widthSize, heightSize, depthSize);
     }
 
     @Override

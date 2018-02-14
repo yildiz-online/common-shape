@@ -42,7 +42,7 @@ final class BoxTest {
 
         @Test
         void happyFlow() {
-            Box b = new Box(1,2,3);
+            Box b = Box.box(1,2,3);
             assertEquals(1, b.width);
             assertEquals(2, b.height);
             assertEquals(3, b.depth);
@@ -50,7 +50,7 @@ final class BoxTest {
 
         @Test
         void happyFlow1Arg() {
-            Box b = new Box(5);
+            Box b = Box.cube(5);
             assertEquals(5, b.width);
             assertEquals(5, b.height);
             assertEquals(5, b.depth);
@@ -58,32 +58,32 @@ final class BoxTest {
 
         @Test
         void zeroWidth() {
-            assertThrows(AssertionError.class, () -> new Box(0,2,3));
+            assertThrows(AssertionError.class, () -> Box.box(0,2,3));
         }
 
         @Test
         void zeroHeight() {
-            assertThrows(AssertionError.class, () -> new Box(1,0,3));
+            assertThrows(AssertionError.class, () -> Box.box(1,0,3));
         }
 
         @Test
         void zeroDepth() {
-            assertThrows(AssertionError.class, () -> new Box(1,2,0));
+            assertThrows(AssertionError.class, () -> Box.box(1,2,0));
         }
 
         @Test
         void negativeWidth() {
-            assertThrows(AssertionError.class, () -> new Box(-1,2,3));
+            assertThrows(AssertionError.class, () -> Box.box(-1,2,3));
         }
 
         @Test
         void negativeHeight() {
-            assertThrows(AssertionError.class, () -> new Box(1,-1,3));
+            assertThrows(AssertionError.class, () -> Box.box(1,-1,3));
         }
 
         @Test
         void negativeDepth() {
-            assertThrows(AssertionError.class, () -> new Box(1,2,-1));
+            assertThrows(AssertionError.class, () -> Box.box(1,2,-1));
         }
     }
 
@@ -92,47 +92,47 @@ final class BoxTest {
 
         @Test
         void sameHash() {
-            Box b1 = new Box(2);
-            Box b2 = new Box(2);
+            Box b1 = Box.cube(2);
+            Box b2 = Box.cube(2);
             assertEquals(b1.hashCode(), b2.hashCode());
         }
 
         @Test
         void differentHash() {
-            Box b1 = new Box(2);
-            Box b2 = new Box(3);
+            Box b1 = Box.cube(2);
+            Box b2 = Box.cube(3);
             assertNotEquals(b1.hashCode(), b2.hashCode());
         }
 
         @Test
         void sameValues() {
-            Box b1 = new Box(2);
-            Box b2 = new Box(2);
+            Box b1 = Box.cube(2);
+            Box b2 = Box.cube(2);
             assertEquals(b1, b2);
         }
 
         @Test
         void sameObject() {
-            Box b1 = new Box(2);
+            Box b1 = Box.cube(2);
             assertEquals(b1, b1);
         }
 
         @Test
         void fromNull() {
-            Box b1 = new Box(2);
+            Box b1 = Box.cube(2);
             assertFalse(b1.equals(null));
         }
 
         @Test
         void fromOtherType() {
-            Box b1 = new Box(2);
+            Box b1 = Box.cube(2);
             assertFalse(b1.equals(2));
         }
 
         @Test
         void differentValues() {
-            Box b1 = new Box(2);
-            assertFalse(b1.equals(new Box(3)));
+            Box b1 = Box.cube(2);
+            assertFalse(b1.equals(Box.cube(3)));
         }
     }
 }
