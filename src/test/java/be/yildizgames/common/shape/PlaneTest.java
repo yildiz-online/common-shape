@@ -24,6 +24,7 @@
 
 package be.yildizgames.common.shape;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -123,5 +124,11 @@ class PlaneTest {
             Plane p1 = Plane.square(2);
             assertFalse(p1.equals(Plane.square(3)));
         }
+    }
+
+    @Test
+    void testToString() {
+        Plane p = Plane.rectangle(1,2);
+        Assertions.assertEquals("Plane(1, 2)", p.toString());
     }
 }
