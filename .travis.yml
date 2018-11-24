@@ -1,15 +1,19 @@
 sudo: required
+
 language: generic
+
 git:
   depth: false
+
+dist:
+  xenial
+
 services:
-- docker
+  - docker
+
 before_install:
-- docker pull moussavdb/build-java
-script:
-- docker run -v $PWD:/src -w /src moussavdb/build-java mvn -V -s settings.xml org.jacoco:jacoco-maven-plugin:prepare-agent
-  clean install sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORGANIZATION
-  -Dsonar.login=$SONAR
+  - docker pull moussavdb/build-java
+
 env:
   global:
   - secure: fWjnVZPHYzY3QCVUK3yFM6r3KsJ7gcAzbJ42SJ2sgGemIbzC1zLK7ueVrspJ69fFTvz67Cf4NRolx0/d7gQjd4xkT7s8y1saHMcWEVSGFoZnfNa6wy3po1mk6AQViEAW/OkIg4CcrADzz8zaDpGTE0lE4lTiQg4RFAx3u0NSueWWSrgLlAoI/tN9x3Zs+cppG2KR5ayDkkkBIVxkG3sth/EDksIzBtfvmY+jCLgjyP8EOxL08/VGoQldCPgqmA31fsMMNQ/UjbOpvon9aJlIG5oXoVDS9i+kA0O7fAB8Yl7+VN7puLzBXpSjZtCY5ORI7cnepRzLKKX1FFidi68PapgNg+CefTiB2gdsdRVBdGGc+AS+q2Yqd8Xu5NPbXaEd7oK2osDKYCQHTGBSJnqpac7nP+2O1IV+Jogs9Fe8fyZ2iUm6yxnEoiRfAb2XCfP1a6Dn4jHx0sYXp/yDpy0746zSTHZARlQcMGVL27QZ4RIOZMkseeKeW+IIWw6IlTuaaYD2XpUdxmts9fSjsPjaLXCU1IQ3ZbE1kUBfGgsyBig2pHoHWpvATO/t79Bwrf8HVezse4CCaVDnwp2P/nw8J6P0ndPMvb1p5W9YgOzkyh8CAsT6QaJZ7PVaD0OPgV7/ojFck7Mz5ZrWvGli4HxUvVgV3G7oGKGyyN23NCXCHEk=
@@ -21,3 +25,7 @@ env:
   - secure: QFgLbgncIn4INTEsO7ZQQx7EHcYBh4s5cmqqc6yDrfMkU23E6b10BUVQ4eoIKXRoIXqyJ0XcxPwLzb1u5BXXO8Fjw5BHI37PQFr/qtjC74e7dWkanUi6PejHWGHhpLbi0zL76kgxdARKKnfNf22401by4OX5oyZjORLQgfmnA3Wg+ngatkQYE3ROu+sB3PRsYoypbizC9oQK+XfUVicW3WejVLFecHcOgD4oTBMUtULR4ZIRMAg1KzKBYF2jrPfn/7YwB7qQkFH7hY4JAirH/15/a5pems2/17wna856HTjNmeMQ1JmFncQEEYGXTHnFAZdv8uwJV/asOLde3YVmUpNxskwu4NpqOjKk1htGEBJiHhgquxIrvJhORWfyIRRRc4VSm4Xap+bTrHfcWgQx/07W24AeawoncDIMXtmFgg31wiYkIbapvIS/SrjCbS3nvUAZcvi1iLXk81MHoXVMZNc/JqrWKNb+jfuqiITFoM+wdIqZZ2SglJ4yEQy7sdSYdl+RI6Rci7icUy/S95CaOLNVitpuBPN4t/4OztwmYC6Hok3ckTk/RS16wAmUATmWhXUQST+IYFyxfMmVYg/3astMwZK7lf1erVt4ABWn0fcQBmo6nZBQM+bbgtV5xC9VefSKEpwDvjugQA3hWXKskAyyw+Cyl0/z2AeBsUrAQ3Q=
   - secure: VRcY4J5XVDH+73tLxGiAM4JjsPsxkOiyAhNHNqfx9sPezVuhLjkSEIqm3FPOcQlaDJucTXQ+ExTUadENITlnJisfbYCvzWT0J+syglMoS6AtC5UWmOgvC8UEO9rCdcPOWR4+OgJpxbVD86J+lZ5DpMRiWGYJ3kZl/LcNbiHPAri8IvxzW9QDM7gCSgsqC3WmzvNNfWMf2GVbRNn+jwanKABKgj0+wEkh6MyAG9EUuFKMOhVYmtxbKkUOljYnFQj6vD/5EnV95NMzx3eXZKFkKB98hsVGmdRjcyjTxv7U6kit1bK73Iq/+NE547BXbZI4Jy5+k4/7Qx/ioTYlA2UPBirKTPtX3Wu1HCkzA3FmrZhuOAp2BeEYDJYON/mkbzN+JWWe3SNysBbt/PulYvqoTboB5JHRQjy/IV45FyZI1kB2eiQQsy97LPKx5FvqmVqGwgt4Oi1/BI5yvX0/wYj3tQQp4KS490aNge/uGfMwHk2rklLuyHaRJvIapJAJLmTuLzgpdNaSeSGcweKpEdoBLbK6C/kUJwsQAjMHyPvGnwHWgJDNBilA75TcrPiQEpo2a4jyAcLUCTzDS7HsQqPECEA73dBBkVbsecBYpSF+utH7U3zB650u3j0qJxaje5wfyndVt8QztfwCuOCShEYAkZOdR5PytF38aRvGo1/gSEU=
   - secure: Yr58epgultIXU7IvlDFETOIsnbRMYvxyqIAXqtUmH7QMlqrEtBpopB/ALyGDSB25Fw8VnCcTQHGt3Ud2EtsMjlO6Ysd5LS8b7Z2UNztGKBkHrDuZ88WGkjAMhkZAHmW+ddUN/c9R3USqb7bnyv1yMKzJuQ8rqIdXHh3BiWa/cLjSCBUhfOxsn5aquhHVdL37P3GPZdFVwpE3jEeQWpzquqbaQMBj6IiOw1AK5xhap/m9uLMXgE63KJzTcW04YXPSdP3stCxu+yn9cdySR1KsxV7XoBweHdU6+fzPCwL2Bgtxu8r5yjg21BwisFJQuvyearBJ/tysLaQUXWYw2cExlnA59bhHAlnmYjuSXp1SdVvCW1jtWa+OJrqmw9mI4oh8V6NwZxE2uUZNyhHYE0DMP/ProEsGDehRPEMspNtK7b487/T/zuVzTkrZ1VbdhrRsSnaCM+lvsCeQBb4plfqylIfH0JqPvNuiqgLY6u0Jm61y/zHyGOSaar4n+F8Ek2oLZfLugONZ6+LiFvuv0HKoVeZhk3G+56LwaG/a/7cH6XIimIXeRvt+HEM/816tBL7wwZk1W62iwFA3UyvdtFvnSnCeC0ycOjUhA5YVtuwWI2wZAcF3zCEvcX3q37n1eFklkVXOU9KtgSmIm8mgw3Lz+C1zV8rBZv9fQZ7JjeVjvr0=
+
+script:
+  - chmod 777 deploy-maven-central.sh
+  - docker run -v $PWD:/src -e BRANCH=$TRAVIS_BRANCH -e OPENSSL_PWD=$OPENSSL_PWD -e GPG_PWD=$GPG_PWD -e GPG_KEY=$GPG_KEY -e OSSRH_USER_TOKEN=$OSSRH_USER_TOKEN -e OSSRH_PWD_TOKEN=$OSSRH_PWD_TOKEN -e SONAR=$SONAR -e SONAR_ORGANIZATION=$SONAR_ORGANIZATION moussavdb/build-java ./deploy-maven-central.sh
