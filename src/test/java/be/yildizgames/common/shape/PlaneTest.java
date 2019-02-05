@@ -36,98 +36,98 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-class PlaneTest {
+public class PlaneTest {
 
     @Nested
-    class Constructor {
+    public class Constructor {
 
         @Test
-        void happyFlow() {
+        public void happyFlow() {
             Plane p = Plane.rectangle(1,2);
             assertEquals(1, p.width);
             assertEquals(2, p.depth);
         }
 
         @Test
-        void happyFlow1Arg() {
+        public void happyFlow1Arg() {
             Plane p = Plane.square(1);
             assertEquals(1, p.width);
             assertEquals(1, p.depth);
         }
 
         @Test
-        void zeroWidth() {
+        public void zeroWidth() {
             assertThrows(AssertionError.class, () -> Plane.rectangle(0,1));
         }
 
 
         @Test
-        void zeroDepth() {
+        public void zeroDepth() {
             assertThrows(AssertionError.class, () -> Plane.rectangle(1,0));
         }
 
         @Test
-        void negativeWidth() {
+        public void negativeWidth() {
             assertThrows(AssertionError.class, () -> Plane.rectangle(-1,3));
         }
 
         @Test
-        void negativeDepth() {
+        public void negativeDepth() {
             assertThrows(AssertionError.class, () -> Plane.rectangle(1,-1));
         }
     }
 
     @Nested
-    class EqualsHashCode {
+    public class EqualsHashCode {
 
         @Test
-        void sameHash() {
+        public void sameHash() {
             Plane p1 = Plane.square(2);
             Plane p2 = Plane.square(2);
             assertEquals(p1.hashCode(), p2.hashCode());
         }
 
         @Test
-        void differentHash() {
+        public void differentHash() {
             Plane p1 = Plane.square(2);
             Plane p2 = Plane.square(3);
             assertNotEquals(p1.hashCode(), p2.hashCode());
         }
 
         @Test
-        void sameValues() {
+        public void sameValues() {
             Plane p1 = Plane.square(2);
             Plane p2 = Plane.square(2);
             assertEquals(p1, p2);
         }
 
         @Test
-        void sameObject() {
+        public void sameObject() {
             Plane p1 = Plane.square(2);
             assertEquals(p1, p1);
         }
 
         @Test
-        void fromNull() {
+        public void fromNull() {
             Plane p1 = Plane.square(2);
             assertFalse(p1.equals(null));
         }
 
         @Test
-        void fromOtherType() {
+        public void fromOtherType() {
             Plane p1 = Plane.square(2);
             assertFalse(p1.equals(2));
         }
 
         @Test
-        void differentValues() {
+        public void differentValues() {
             Plane p1 = Plane.square(2);
             assertFalse(p1.equals(Plane.square(3)));
         }
     }
 
     @Test
-    void testToString() {
+    public void testToString() {
         Plane p = Plane.rectangle(1,2);
         Assertions.assertEquals("Plane(1, 2)", p.toString());
     }

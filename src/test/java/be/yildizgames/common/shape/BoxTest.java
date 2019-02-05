@@ -35,13 +35,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-final class BoxTest {
+public final class BoxTest {
 
     @Nested
-    class Constructor {
+    public class Constructor {
 
         @Test
-        void happyFlow() {
+        public void happyFlow() {
             Box b = Box.box(1,2,3);
             assertEquals(1, b.width);
             assertEquals(2, b.height);
@@ -49,7 +49,7 @@ final class BoxTest {
         }
 
         @Test
-        void happyFlow1Arg() {
+        public void happyFlow1Arg() {
             Box b = Box.cube(5);
             assertEquals(5, b.width);
             assertEquals(5, b.height);
@@ -57,80 +57,80 @@ final class BoxTest {
         }
 
         @Test
-        void zeroWidth() {
+        public void zeroWidth() {
             assertThrows(AssertionError.class, () -> Box.box(0,2,3));
         }
 
         @Test
-        void zeroHeight() {
+        public void zeroHeight() {
             assertThrows(AssertionError.class, () -> Box.box(1,0,3));
         }
 
         @Test
-        void zeroDepth() {
+        public void zeroDepth() {
             assertThrows(AssertionError.class, () -> Box.box(1,2,0));
         }
 
         @Test
-        void negativeWidth() {
+        public void negativeWidth() {
             assertThrows(AssertionError.class, () -> Box.box(-1,2,3));
         }
 
         @Test
-        void negativeHeight() {
+        public void negativeHeight() {
             assertThrows(AssertionError.class, () -> Box.box(1,-1,3));
         }
 
         @Test
-        void negativeDepth() {
+        public void negativeDepth() {
             assertThrows(AssertionError.class, () -> Box.box(1,2,-1));
         }
     }
 
     @Nested
-    class EqualsHashCode {
+    public class EqualsHashCode {
 
         @Test
-        void sameHash() {
+        public void sameHash() {
             Box b1 = Box.cube(2);
             Box b2 = Box.cube(2);
             assertEquals(b1.hashCode(), b2.hashCode());
         }
 
         @Test
-        void differentHash() {
+        public void differentHash() {
             Box b1 = Box.cube(2);
             Box b2 = Box.cube(3);
             assertNotEquals(b1.hashCode(), b2.hashCode());
         }
 
         @Test
-        void sameValues() {
+        public void sameValues() {
             Box b1 = Box.cube(2);
             Box b2 = Box.cube(2);
             assertEquals(b1, b2);
         }
 
         @Test
-        void sameObject() {
+        public void sameObject() {
             Box b1 = Box.cube(2);
             assertEquals(b1, b1);
         }
 
         @Test
-        void fromNull() {
+        public void fromNull() {
             Box b1 = Box.cube(2);
             assertFalse(b1.equals(null));
         }
 
         @Test
-        void fromOtherType() {
+        public void fromOtherType() {
             Box b1 = Box.cube(2);
             assertFalse(b1.equals(2));
         }
 
         @Test
-        void differentValues() {
+        public void differentValues() {
             Box b1 = Box.cube(2);
             assertFalse(b1.equals(Box.cube(3)));
         }
