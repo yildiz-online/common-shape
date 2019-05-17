@@ -135,4 +135,5 @@ public final class BoxTest {
             assertFalse(b1.equals(Box.cube(3)));
         }
     }
+
 }

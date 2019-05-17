@@ -84,7 +84,7 @@ public final class Box {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -98,7 +98,7 @@ public final class Box {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         int result = width;
         result = 31 * result + height;
         result = 31 * result + depth;
