@@ -93,7 +93,7 @@ public final class Plane {
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return "Plane(" + this.width + ", " + this.depth + ")";
     }
 
