@@ -43,6 +43,11 @@
     <artifactId>parent</artifactId>
     <version>3.0.7</version>
   </parent>
+
+  <properties>
+    <java.version>11</java.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
