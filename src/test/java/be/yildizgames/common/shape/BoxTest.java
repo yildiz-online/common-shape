@@ -35,21 +35,21 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-public final class BoxTest {
+final class BoxTest {
 
     @Nested
-    public class Constructor {
+    class Constructor {
 
         @Test
-        public void happyFlow() {
-            Box b = Box.box(1,2,3);
+        void happyFlow() {
+            Box b = Box.box(1, 2, 3);
             assertEquals(1, b.width);
             assertEquals(2, b.height);
             assertEquals(3, b.depth);
         }
 
         @Test
-        public void happyFlow1Arg() {
+        void happyFlow1Arg() {
             Box b = Box.cube(5);
             assertEquals(5, b.width);
             assertEquals(5, b.height);
@@ -57,80 +57,80 @@ public final class BoxTest {
         }
 
         @Test
-        public void zeroWidth() {
-            assertThrows(AssertionError.class, () -> Box.box(0,2,3));
+        void zeroWidth() {
+            assertThrows(AssertionError.class, () -> Box.box(0, 2, 3));
         }
 
         @Test
-        public void zeroHeight() {
-            assertThrows(AssertionError.class, () -> Box.box(1,0,3));
+        void zeroHeight() {
+            assertThrows(AssertionError.class, () -> Box.box(1, 0, 3));
         }
 
         @Test
-        public void zeroDepth() {
-            assertThrows(AssertionError.class, () -> Box.box(1,2,0));
+        void zeroDepth() {
+            assertThrows(AssertionError.class, () -> Box.box(1, 2, 0));
         }
 
         @Test
-        public void negativeWidth() {
-            assertThrows(AssertionError.class, () -> Box.box(-1,2,3));
+        void negativeWidth() {
+            assertThrows(AssertionError.class, () -> Box.box(-1, 2, 3));
         }
 
         @Test
-        public void negativeHeight() {
-            assertThrows(AssertionError.class, () -> Box.box(1,-1,3));
+        void negativeHeight() {
+            assertThrows(AssertionError.class, () -> Box.box(1, -1, 3));
         }
 
         @Test
-        public void negativeDepth() {
-            assertThrows(AssertionError.class, () -> Box.box(1,2,-1));
+        void negativeDepth() {
+            assertThrows(AssertionError.class, () -> Box.box(1, 2, -1));
         }
     }
 
     @Nested
-    public class EqualsHashCode {
+    class EqualsHashCode {
 
         @Test
-        public void sameHash() {
+        void sameHash() {
             Box b1 = Box.cube(2);
             Box b2 = Box.cube(2);
             assertEquals(b1.hashCode(), b2.hashCode());
         }
 
         @Test
-        public void differentHash() {
+        void differentHash() {
             Box b1 = Box.cube(2);
             Box b2 = Box.cube(3);
             assertNotEquals(b1.hashCode(), b2.hashCode());
         }
 
         @Test
-        public void sameValues() {
+        void sameValues() {
             Box b1 = Box.cube(2);
             Box b2 = Box.cube(2);
             assertEquals(b1, b2);
         }
 
         @Test
-        public void sameObject() {
+        void sameObject() {
             Box b1 = Box.cube(2);
             assertEquals(b1, b1);
         }
 
         @Test
-        public void fromNull() {
+        void fromNull() {
             Box b1 = Box.cube(2);
             assertFalse(b1.equals(null));
         }
 
         @Test
-        public void fromOtherType() {
+        void fromOtherType() {
             Box b1 = Box.cube(2);
             assertFalse(b1.equals(2));
         }
 
         @Test
-        public void differentValues() {
+        void differentValues() {
             Box b1 = Box.cube(2);
             assertFalse(b1.equals(Box.cube(3)));
         }

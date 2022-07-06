@@ -36,73 +36,73 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-public class SphereTest {
+class SphereTest {
 
     @Nested
-    public class Constructor {
+    class Constructor {
 
         @Test
-        public void happyFlow() {
+        void happyFlow() {
             Sphere s = Sphere.fromRadius(5);
             assertEquals(5, s.radius, 0.00001f);
         }
 
         @Test
-        public void zeroRadius() {
+        void zeroRadius() {
             assertThrows(AssertionError.class, () -> Sphere.fromRadius(0));
         }
 
 
         @Test
-        public void negativeRadius() {
+        void negativeRadius() {
             assertThrows(AssertionError.class, () -> Sphere.fromRadius(-1));
         }
     }
 
     @Nested
-    public class EqualsHashCode {
+    class EqualsHashCode {
 
         @Test
-        public void sameHash() {
+        void sameHash() {
             Sphere p1 = Sphere.fromRadius(2);
             Sphere p2 = Sphere.fromRadius(2);
             assertEquals(p1.hashCode(), p2.hashCode());
         }
 
         @Test
-        public void differentHash() {
+        void differentHash() {
             Sphere p1 = Sphere.fromRadius(2);
             Sphere p2 = Sphere.fromRadius(3);
             assertNotEquals(p1.hashCode(), p2.hashCode());
         }
 
         @Test
-        public void sameValues() {
+        void sameValues() {
             Sphere p1 = Sphere.fromRadius(2);
             Sphere p2 = Sphere.fromRadius(2);
             assertEquals(p1, p2);
         }
 
         @Test
-        public void sameObject() {
+        void sameObject() {
             Sphere p1 = Sphere.fromRadius(2);
             assertEquals(p1, p1);
         }
 
         @Test
-        public void fromNull() {
+        void fromNull() {
             Sphere p1 = Sphere.fromRadius(2);
             assertFalse(p1.equals(null));
         }
 
         @Test
-        public void fromOtherType() {
+        void fromOtherType() {
             Sphere p1 = Sphere.fromRadius(2);
             assertFalse(p1.equals(2));
         }
 
         @Test
-        public void differentValues() {
+        void differentValues() {
             Sphere p1 = Sphere.fromRadius(2);
             assertFalse(p1.equals(Sphere.fromRadius(3)));
         }

@@ -22,7 +22,7 @@
  *
  */
 
-module be.yildizgames.common.shape {
+open module be.yildizgames.common.shape {
 
     exports be.yildizgames.common.shape;
 }
